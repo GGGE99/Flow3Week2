@@ -1,0 +1,44 @@
+.login {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 30%;
+  height: 60%;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.login input {
+  width: 90%;
+  margin-top: 5%;
+  height: 25px;
+  border: none;
+}
+
+.login button {
+  margin-top: 5%;
+  border: none;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+  height: 2rem;
+  border-radius: 5px;
+  background: linear-gradient(
+    12deg,
+    rgb(0, 174, 255) 35%,
+    rgb(0, 255, 34) 100%
+  );
+}
+
+.form__label {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  display: none;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: gray;
+}

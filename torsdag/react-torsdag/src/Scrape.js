@@ -14,10 +14,10 @@ export default function Scrape() {
 
   if (scrape.tags !== undefined) {
     return (
-      <div>  
-        <p style={{ borderBottom: "1px solid black" }}>Time: {scrape.timeSpent}</p>
+      <div className="scrape__div">  
+        <p>Time: {scrape.timeSpent}</p>
         {scrape.tags.map((element) => (
-          <div key={element.url} style={{ borderBottom: "1px solid black" }}>
+          <div key={element.url} className="site__div">
             {Object.entries(element).map(([key, value]) => (
               <p key={key + value}>
                 {key}: {value}

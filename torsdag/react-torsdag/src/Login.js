@@ -19,24 +19,48 @@ function LogIn({ login }) {
   return (
     <div>
       <h2>Login</h2>
-      <form onChange={onChange}>
-        <input placeholder="User Name" id="username" />
-        <input placeholder="Password" id="password" />
+      <form onChange={onChange} className="form__group">
+        <div className="input">
+          <input
+            type="input"
+            className="form__field"
+            placeholder="Name"
+            name="username"
+            id="username"
+            required
+          />
+        </div>
+        <div className="input">
+          <input
+            type="input"
+            className="form__field"
+            placeholder="Password"
+            name="password"
+            id="password"
+            required
+          />
+        </div>
         <button onClick={performLogin}>Login</button>
       </form>
     </div>
   );
 }
 
-function LoggedIn({setDataFromServer, dataFromServer}) {
-  
-
+function LoggedIn({ setDataFromServer, dataFromServer }) {
   useEffect(() => {
-    facade.fetchData("user").then((data) => {
-      setDataFromServer(data.msg);
-    }).catch(facade.fetchData("admin").then((data) => {
-      setDataFromServer(data.msg);
-    }));
+    facade
+      .fetchData("user")
+      .then((data) => {
+        setDataFromServer(data.msg);
+      })
+      .catch(err =>
+        facade
+          .fetchData("admin")
+          .then((data) => {
+            setDataFromServer(data.msg);
+          })
+          .catch(setDataFromServer("err"))
+      );
   }, []);
 
   return (
@@ -49,12 +73,15 @@ function LoggedIn({setDataFromServer, dataFromServer}) {
 
 function Login({ loggedIn, login, logout, dataFromServer, setDataFromServer }) {
   return (
-    <div>
+    <div className="login">
       {!loggedIn ? (
         <LogIn login={login} />
       ) : (
         <div>
-          <LoggedIn setDataFromServer={setDataFromServer} dataFromServer={dataFromServer}/>
+          <LoggedIn
+            setDataFromServer={setDataFromServer}
+            dataFromServer={dataFromServer}
+          />
           <button onClick={logout}>Logout</button>
         </div>
       )}
